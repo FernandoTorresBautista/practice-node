@@ -1,0 +1,13 @@
+const Producto = require("../models/Producto");
+
+exports.crearproducto = async (req, res) => {
+  try {
+    let producto; // crear producto
+    producto = new Producto(req.body);
+    await producto.save();
+    res.send(producto);
+  } catch (error) {
+    console.log(error);
+    req.status(500).send("Hubo un error");
+  }
+}
